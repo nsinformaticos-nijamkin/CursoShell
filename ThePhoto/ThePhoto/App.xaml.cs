@@ -11,8 +11,8 @@ namespace ThePhoto
             InitializeComponent();
 
             // MainPage = new RandomPhotoView();
-            //MainPage = new appShell();
-            MainPage = new AppShellTabs();
+         MainPage = new appShell();
+            //MainPage = new AppShellTabs();
         }
 
         protected override void OnStart()

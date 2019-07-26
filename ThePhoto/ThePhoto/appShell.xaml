@@ -12,6 +12,42 @@
              FlyoutHeaderBehavior="CollapseOnScroll"
              FlyoutBehavior="Flyout">
 
+
+    <Shell.Resources>
+        <Style x:Key="BaseStyle"
+               TargetType="Element">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#33333D"/>
+            <Setter Property="Shell.DisabledColor"
+                    Value="#4FFFFFF"/>
+            <Setter Property="Shell.ForegroundColor"
+                    Value="White"/>
+            <Setter Property="Shell.TitleColor"
+                    Value="White"/>
+            <Setter Property="Shell.UnselectedColor"
+                    Value="#95FFFFFF"/>
+        </Style>
+        <Style TargetType="FlyoutItem"
+               BasedOn="{StaticResource BaseStyle}">
+        </Style>
+        <Style x:Key="FoodStyle"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="DarkRed"/>
+        </Style>
+        <Style x:Key="PastaStyle"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="Gold"/>
+            <!--<Setter Property="Shell.NavBarIsVisible"
+                    Value="False"/>
+            <Setter Property="Shell.TabBarIsVisible"
+                    Value="False"/>-->
+        </Style>
+    </Shell.Resources>
+
     <!--<Shell.FlyoutHeader>
         <views:FlyoutHeader/>
     </Shell.FlyoutHeader>-->
@@ -80,10 +116,11 @@
     </FlyoutItem>
     <FlyoutItem Title="Food"
                 Icon="food.png"
-                FlyoutDisplayOptions="AsSingleItem">
+                FlyoutDisplayOptions="AsSingleItem"
+                Style="{StaticResource FoodStyle}">
         <Tab Title="Meat"
              Icon="meat.png">
-            <ShellContent Title="Chicken"
+                  <ShellContent Title="Chicken"
                           Icon="chicken.png">
                 <food:ChickenMeatView/>
             </ShellContent>
@@ -93,7 +130,8 @@
             </ShellContent>
         </Tab>
         <Tab Title="Pasta"
-             Icon="pasta.png">
+             Icon="pasta.png"
+             Style="{StaticResource PastaStyle}">
             <ShellContent>
                 <food:PastaView/>
             </ShellContent>
