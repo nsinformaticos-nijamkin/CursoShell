@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:food="clr-namespace:ThePhoto.Views.Food" 
+             xmlns:views="clr-namespace:ThePhoto.Views" 
+             xmlns:places="clr-namespace:ThePhoto.Views.Places"
+             mc:Ignorable="d"
+             x:Class="ThePhoto.appShell"
+             FlyoutIcon="menu.png"
+             FlyoutHeaderBehavior="CollapseOnScroll"
+             FlyoutBehavior="Flyout">
+
+    <!--<Shell.FlyoutHeader>
+        <views:FlyoutHeader/>
+    </Shell.FlyoutHeader>-->
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="Black">
+                <Image Aspect="AspectFill"
+                       Source="header.jpg"
+                       Opacity="0.6"/>
+                <Label Text="The Photo"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Large"
+                       Style="{d:StaticResource RobotoBold}"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+        
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding FlyoutIcon}"
+                       Margin="5"
+                       HeightRequest="45"/>
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       FontAttributes="Italic"
+                       VerticalTextAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <FlyoutItem Title="Random Photo"
+                Icon="random.png">
+        <Tab>
+            <ShellContent>
+                <views:RandomPhotoView/>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Food"
+                Icon="food.png"
+                FlyoutDisplayOptions="AsSingleItem">
+        <Tab Title="Meat"
+             Icon="meat.png">
+            <ShellContent Title="Chicken"
+                          Icon="chicken.png">
+                <food:ChickenMeatView/>
+            </ShellContent>
+            <ShellContent Title="Beef"
+                          Icon="beef.png">
+                <food:BeefMeatView/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Pasta"
+             Icon="pasta.png">
+            <ShellContent>
+                <food:PastaView/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Dessert"
+             Icon="dessert.png">
+            <ShellContent Title="Cake"
+                          Icon="cake.png">
+                <food:CakeView/>
+            </ShellContent>
+            <ShellContent Title="Cookies"
+                          Icon="cookies.png">
+                <food:CookiesView/>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Places"
+                Icon="places.png">
+        <Tab Title="Mexico"
+              Icon="mexico.png">
+            <ShellContent Title="Chiapa"
+                          Icon="chiapa.png">
+                <places:ChiapasView/>
+            </ShellContent>
+            <ShellContent Title="Cancun"
+                          Icon="cancun.png">
+                <places:CancunView/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="France"
+              Icon="france.png">
+            <ShellContent>
+                <places:ParisView/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Egypt"
+              Icon="egypt.png">
+            <ShellContent>
+                <places:CairoView/>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    
+</Shell>
